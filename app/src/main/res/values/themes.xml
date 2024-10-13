@@ -1,0 +1,8 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ERPLoginSandipUniversity" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@android:color/black</item>
+    </style>
+
+    <style name="Theme.ERPLoginSandipUniversity" parent="Base.Theme.ERPLoginSandipUniversity" />
+</resources>
