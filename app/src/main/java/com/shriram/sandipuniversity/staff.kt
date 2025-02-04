@@ -5,17 +5,28 @@ import android.os.Bundle
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 
-class staff : AppCompatActivity() {
+class Staff : AppCompatActivity() {
+    private lateinit var displayWeb: WebView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_staff)
 
-
-        // call web-view function
-        val displayWeb = findViewById<WebView>(R.id.displayWeb)
+        displayWeb = findViewById(R.id.displayWeb)
         webViewSetup(displayWeb)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (displayWeb.canGoBack()) {
+                    displayWeb.goBack()
+                } else {
+                    finish()
+                }
+            }
+        })
     }
 
     // web-view function

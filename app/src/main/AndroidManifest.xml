@@ -17,13 +17,13 @@
         android:theme="@style/Theme.ERPLoginSandipUniversity"
         tools:targetApi="31">
         <activity
-            android:name=".home"
+            android:name=".Home"
             android:exported="false" />
         <activity
-            android:name=".student"
+            android:name=".Student"
             android:exported="false" />
         <activity
-            android:name=".staff"
+            android:name=".Staff"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

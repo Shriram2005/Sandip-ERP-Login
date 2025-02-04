@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         homeBtn.setOnClickListener {
             // check user internet available or not
             if (isInternetAvailable(applicationContext)) {
-                val intent = Intent(this, home::class.java)
+                val intent = Intent(this, Home::class.java)
                 Toast.makeText(this, "Loading...", Toast.LENGTH_LONG).show()
                 startActivity(intent)
             } else {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         studentBtn.setOnClickListener {
             if (isInternetAvailable(applicationContext)) {
-                val intent = Intent(this, student::class.java)
+                val intent = Intent(this, Student::class.java)
                 Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             } else {
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         staffBtn.setOnClickListener {
             if (isInternetAvailable(applicationContext)) {
-                val intent = Intent(this, staff::class.java)
+                val intent = Intent(this, Staff::class.java)
                 Toast.makeText(this, "Loading...", Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             } else {
