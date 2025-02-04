@@ -30,7 +30,7 @@ This Android application provides a convenient way for students and staff of San
 
 ## Download
 
-**[Download the APK here](https://example.com/download-link)**
+**[Download the APK here](https://github.com/Shriram2005/Sandip-ERP-Login/releases)**
 
 ## Contributing
 
