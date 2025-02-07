@@ -5,12 +5,18 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+    private var doubleBackToExitPressedOnce = false
+    private val handler = Handler(Looper.getMainLooper())
+    private val runnable = Runnable { doubleBackToExitPressedOnce = false }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -22,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val staffBtn = findViewById<Button>(R.id.staffBtn)
 
         homeBtn.setOnClickListener {
-            // check user internet available or not
             if (isInternetAvailable(applicationContext)) {
                 val intent = Intent(this, Home::class.java)
                 Toast.makeText(this, "Loading...", Toast.LENGTH_LONG).show()
@@ -53,8 +58,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
-    // function to check user internet availabe or not
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+
+        handler.postDelayed(runnable, 2000)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(runnable)
+    }
+
     companion object {
         fun isInternetAvailable(context: Context): Boolean {
             val connectivityManager =
