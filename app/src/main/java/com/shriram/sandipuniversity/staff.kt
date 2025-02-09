@@ -40,8 +40,20 @@ class Staff : AppCompatActivity() {
             // enable local storage
             settings.domStorageEnabled = true
 
-            // load url
-            loadUrl("https://erp.sandipuniversity.com/login/index/staff")
+            // Get selected college from SharedPreferences
+            val prefs = getSharedPreferences(CollegeSelectionActivity.PREF_NAME, MODE_PRIVATE)
+            val selectedCollege = prefs.getString(
+                CollegeSelectionActivity.SELECTED_COLLEGE,
+                CollegeSelectionActivity.COLLEGE_NASHIK
+            )
+
+            // Load appropriate URL based on selected college
+            val url = if (selectedCollege == CollegeSelectionActivity.COLLEGE_SIJOUL) {
+                "https://erpsijoul.sandipuniversity.com/login/index/staff"
+            } else {
+                "https://erp.sandipuniversity.com/login/index/staff"
+            }
+            loadUrl(url)
         }
     }
 }
